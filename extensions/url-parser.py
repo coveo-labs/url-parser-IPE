@@ -1,5 +1,9 @@
 from urlparse import urlparse
 
+# Title: URL Parsing to extract metadata
+# Description: This extension is used to parse urls to extract metadata like categories.
+# Required data:
+
 # captures the Web Path
 path = urlparse(document_api.v1.get_meta_data_value("originaluri")[0]).path
 # Set the category

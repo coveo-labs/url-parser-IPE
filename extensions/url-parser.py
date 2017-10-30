@@ -1,24 +1,20 @@
-from urlparse import urlparse
+import urlparse
 
 # Title: URL Parsing to extract metadata
 # Description: This extension is used to parse urls to extract metadata like categories.
 # Required data:
 
 # captures the Web Path
-path = urlparse(document_api.v1.get_meta_data_value("originaluri")[0]).path
-# Set the category
-try:
-    category1 = "webroot" if path in ("/", "", None) else path.split("/")[1]
-    document_api.v1.add_meta_data({'meta1': category1})
-except:
-    print("error on category1")
-try:
-    category2 = "webroot" if path in ("/", "", None) else path.split("/")[2]
-    document_api.v1.add_meta_data({'meta2': category2})
-except:
-    print("error on category2")
-try:
-    category3 = "webroot" if path in ("/", "", None) else path.split("/")[3]
-    document_api.v1.add_meta_data({'meta3': category3})
-except:
-    print("error on category3")
+path = urlparse.urlparse(document.uri).path
+
+categories = {}
+
+for i, p in enumerate(path.split("/")):
+    if p:
+        # add categories as meta1, meta2, meta3.
+        # You can use an array if you want specific names for the categories.
+        categories['meta'+str(i)] = p
+
+if len(p):
+    # Set the categories
+    document.add_meta_data(categories)

@@ -15,6 +15,6 @@ for i, p in enumerate(path.split("/")):
         # You can use an array if you want specific names for the categories.
         categories['meta'+str(i)] = p
 
-if len(p):
+if len(categories):
     # Set the categories
     document.add_meta_data(categories)

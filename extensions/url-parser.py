@@ -10,8 +10,9 @@ path = urlparse.urlparse(document.uri).path
 categories = {}
 
 for i, p in enumerate(path.split("/")):
+    # path will start with /, so the first p (i=0) is usually empty
     if p:
-        # add categories as meta1, meta2, meta3.
+        # Add categories as meta1, meta2, meta3.
         # You can use an array if you want specific names for the categories.
         categories['meta'+str(i)] = p
 
